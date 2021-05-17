@@ -1,0 +1,59 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Quick Launch",
+            "type": "node-terminal",
+            "request": "launch",
+            "command": "cargo run --features dev",
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'bevy-boids'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=bevy-boids",
+                    "--package=bevy-boids",
+                    "--features=dev"
+                ],
+                "filter": {
+                    "name": "bevy-boids",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "linux": {
+                "env": {
+                    "CARGO_MANIFEST_DIR": "${workspaceFolder}",
+                    "WINIT_X11_SCALE_FACTOR": "1",
+                    "LD_LIBRARY_PATH": "${workspaceFolder}/target/debug:/home/oguz/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib",
+                },
+            }
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'bevy-boids'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=bevy-boids",
+                    "--package=bevy-boids"
+                ],
+                "filter": {
+                    "name": "bevy-boids",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
